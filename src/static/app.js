@@ -55,7 +55,10 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       activitiesList.innerHTML = "<p>Failed to load activities. Please try again later.</p>";
       console.error("Error fetching activities:", error);
-    }delete button clicks
+    }
+  }
+
+  // Handle delete button clicks
   activitiesList.addEventListener("click", async (event) => {
     if (event.target.classList.contains("delete-btn")) {
       const email = event.target.getAttribute("data-email");
@@ -124,10 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
         signupForm.reset();
         
         // Refresh activities list
-        await fetchActivities
-        messageDiv.textContent = result.message;
-        messageDiv.className = "success";
-        signupForm.reset();
+        await fetchActivities();
       } else {
         messageDiv.textContent = result.detail || "An error occurred";
         messageDiv.className = "error";
